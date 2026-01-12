@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Familia – Contact</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Cloudflare Turnstile (Spam Protection) -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+  <!-- Small page-only tweaks (keeps text readable on dark cards) -->
+  <style>
+    .form-text.readable { color:#cbd5e1 !important; opacity:1 !important; }
+    .contact-status { margin-top: 1rem; }
+    .contact-status .alert { margin-bottom: 0; }
+    .social-links a { margin-right: .85rem; }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo/logo-getfamilia-main.png" alt="Get Familia Logo" class="navbar-logo" />
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#videos">Performances</a></li>
+          <li class="nav-item"><a class="nav-link" href="artist-of-the-week.html">Artist of the Week</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="artist-page">
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Contact / Submission Form -->
+          <div class="col-lg-7">
+            <h1 class="section-title mb-3">Contact &amp; Submissions</h1>
+            <p class="mb-4" style="color:#cbd5e1;">
+              Submit your music, request a session, or reach out about bookings, events, and collaborations.
+              Share as much detail as you can so we understand how to work with you.
+            </p>
+
+            <div class="artist-card-modern">
+              <form id="contactForm" novalidate>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name / Stage Name</label>
+                  <input type="text" id="name" name="name" class="form-control" placeholder="Raxx, Get Familia Band, etc."
+                    required minlength="2" />
+                  <div class="invalid-feedback">Please enter your name (2+ characters).</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com" required />
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="inquiryType" class="form-label">Type of Inquiry</label>
+                  <select id="inquiryType" name="inquiryType" class="form-select" required>
+                    <option value="">Select an option</option>
+                    <option value="Artist Submission">Artist Submission / Performance Session</option>
+                    <option value="Booking">Booking / Live Event</option>
+                    <option value="Collaboration">Collaboration / Sponsorship</option>
+                    <option value="Media">Media / Press</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <div class="invalid-feedback">Please choose a type of inquiry.</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="links" class="form-label">Music Links (optional)</label>
+                  <input type="text" id="links" name="links" class="form-control"
+                    placeholder="YouTube, Spotify, Audiomack, SoundCloud, EPK, etc." />
+                  <div class="form-text readable">
+                    Tip: Paste 1–3 links that best represent your sound.
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea id="message" name="message" rows="5" class="form-control"
+                    placeholder="Tell us about yourself, your sound, and what you’re looking for..."
+                    required minlength="10"></textarea>
+                  <div class="invalid-feedback">Please enter a message (10+ characters).</div>
+                </div>
+
+                <!-- Turnstile widget (Optional in local dev) -->
+                <div class="my-3">
+                  <!-- Replace with your real Turnstile site key in production -->
+                  <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY"></div>
+                  <div class="form-text readable">
+                    This helps us block spam submissions.
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-accent">
+                  <span class="me-2"><i class="fa-solid fa-paper-plane"></i></span>
+                  Send Message
+                </button>
+
+                <div id="contactStatus" class="contact-status" aria-live="polite"></div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Contact Details / Info -->
+          <div class="col-lg-5">
+            <div class="video-card p-4 h-100">
+              <h3 class="mb-3" style="color:#f9fafb;">Business &amp; Collaboration</h3>
+
+              <p class="mb-2" style="color:#cbd5e1;">
+                For bookings, partnerships, media, or brand collaborations, contact us directly:
+              </p>
+
+              <p class="mb-1" style="color:#cbd5e1;">
+                <span class="fw-semibold" style="color:#f9fafb;">Email:</span><br />
+                <span class="text-accent">info@getfamilia.ca</span>
+              </p>
+
+              <p class="mb-3" style="color:#cbd5e1;">
+                <span class="fw-semibold" style="color:#f9fafb;">Location:</span><br />
+                Toronto, Canada (sessions and events by booking only)
+              </p>
+
+              <hr class="border-secondary" />
+
+              <h5 class="mb-2" style="color:#f9fafb;">Follow Get Familia</h5>
+              <p class="mb-2 small" style="color:#cbd5e1;">
+                Stay updated on new sessions, Artist of the Week features, and behind-the-scenes clips.
+              </p>
+
+              <div class="social-links mb-3">
+                <a href="https://www.tiktok.com/@getfamilia" target="_blank" rel="noopener"
+                  aria-label="Get Familia on TikTok" title="TikTok">
+                  <i class="fab fa-tiktok"></i>
+                </a>
+
+                <a href="https://www.instagram.com/getfamilia_tv" target="_blank" rel="noopener"
+                  aria-label="Get Familia on Instagram" title="Instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="https://x.com/getfamilia_tv" target="_blank" rel="noopener"
+                  aria-label="Get Familia on X (Twitter)" title="X">
+                  <i class="fab fa-x-twitter"></i>
+                </a>
+
+                <a href="http://www.youtube.com/@GetFamilia-Tv" target="_blank" rel="noopener"
+                  aria-label="Get Familia on YouTube" title="YouTube">
+                  <i class="fab fa-youtube"></i>
+                </a>
+              </div>
+
+              <p class="small mb-0" style="color:#cbd5e1;">
+                We review all submissions. If it’s a strong fit, we’ll reach out to book a session.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer py-3 border-top border-secondary mt-5">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <div class="d-flex align-items-center gap-2">
+        <img src="assets/logo/logo-getfamilia-main.png" alt="Get Familia Logo" class="navbar-logo"
+          style="height: 32px; width: auto;" />
+        <span class="mb-0 small">© <span id="year"></span> Get Familia. All rights reserved.</span>
+      </div>
+
+      <div class="footer-links small d-flex align-items-center gap-3">
+        <div>
+          <a href="about.html" class="me-3 text-decoration-none text-light">About</a>
+          <a href="contact.html" class="me-3 text-decoration-none text-light">Contact</a>
+          <a href="http://www.youtube.com/@GetFamilia-Tv" target="_blank" rel="noopener"
+            class="text-decoration-none text-accent">
+            Watch on YouTube
+          </a>
+        </div>
+
+        <div class="social-links">
+          <a href="https://www.tiktok.com/@getfamilia" target="_blank" rel="noopener" aria-label="Get Familia on TikTok" title="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://www.instagram.com/getfamilia_tv" target="_blank" rel="noopener" aria-label="Get Familia on Instagram" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://x.com/getfamilia_tv" target="_blank" rel="noopener" aria-label="Get Familia on X (Twitter)" title="X">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  const form = document.getElementById("contactForm");
+  const alertBox = document.getElementById("formAlert");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    alertBox.innerHTML = "";
+
+    const payload = {
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      inquiryType: document.getElementById("inquiryType").value,
+      links: document.getElementById("links").value.trim(),
+      message: document.getElementById("message").value.trim(),
+    };
+
+    try {
+      const res = await fetch("http://127.0.0.1:5000/api/submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data?.message || "Submission failed");
+
+      alertBox.innerHTML = `<div class="alert alert-success">Submitted successfully. We’ll get back to you soon.</div>`;
+      form.reset();
+    } catch (err) {
+      alertBox.innerHTML = `<div class="alert alert-danger">${err.message}</div>`;
+    }
+  });
+</script>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

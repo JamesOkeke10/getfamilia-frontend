@@ -1,0 +1,438 @@
+:root { 
+  --bg-main: #070b12;
+  --bg-alt: #101620;
+  --accent: #ff4c29;
+  --accent-soft: rgba(255, 76, 41, 0.2);
+  --text-main: #f5f5f5;
+}
+
+/* Global */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  padding-top: 70px; /* space for fixed navbar */
+}
+
+/* Accent text */
+.text-accent {
+  color: var(--accent) !important;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(90deg, #050812, #111827);
+}
+
+/* Navbar logo size */
+.navbar-logo {
+  height: 50px; /* tweak 40–56 as you prefer */
+  width: auto;
+}
+
+/* Optional: make it shrink a bit on very small screens */
+@media (max-width: 576px) {
+  .navbar-logo {
+    height: 40px;
+  }
+}
+
+/* Hero */
+.hero-section {
+  min-height: 90vh;
+  background: radial-gradient(circle at top left, #1f2933, #050812 50%, #000000);
+  color: #ffffff;
+}
+
+.hero-title {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  max-width: 520px;
+  margin: 1rem 0 1.5rem;
+  color: #d1d5db;
+}
+
+.hero-card {
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+/* Buttons */
+.btn-accent {
+  background: var(--accent);
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 999px;
+  padding-inline: 1.5rem;
+}
+
+.btn-accent:hover {
+  background: #e24323;
+  color: #ffffff;
+}
+
+.btn-outline-accent {
+  border-radius: 999px;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-outline-accent:hover {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* Sections */
+.bg-dark-alt {
+  background-color: var(--bg-alt);
+}
+
+.section-title {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-weight: 700;
+}
+
+/* Cards */
+.video-card,
+.artist-card {
+  background-color: #111827;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  overflow: hidden;
+}
+
+/* =========================
+   ARTIST OF THE WEEK PAGE
+   ========================= */
+
+.artist-page {
+  padding-top: 6rem; /* extra space for fixed navbar */
+  padding-bottom: 3rem;
+}
+
+/* Main artist feature card */
+.artist-card-modern {
+  background: #050814;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 2.5rem 2rem;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+}
+
+/* Photo container */
+.artist-photo-wrapper {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid var(--accent);
+}
+
+/* Photo itself */
+.artist-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* avoids distortion, crops nicely */
+  display: block;
+}
+
+/* Artist typography */
+.artist-name {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-weight: 800;
+  color: #f9fafb;
+}
+
+/* FIX: make subtitle under name visible */
+.artist-meta,
+.artist-meta.text-muted {
+  font-size: 0.95rem;
+  color: #9ca3af !important;   /* light grey, clear on dark bg */
+  letter-spacing: 0.02em;
+}
+
+.artist-bio p {
+  margin-bottom: 0.75rem;
+}
+
+/* Footer */
+footer {
+  background-color: #050812;
+  color: #9ca3af;
+}
+
+/* Social icon links (used in footer, contact, artist page) */
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.75rem;
+  font-size: 1.3rem;
+  color: #f5f5f5;
+  text-decoration: none;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.social-links a:last-child {
+  margin-right: 0;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* Artist platforms note under socials */
+.artist-platforms-text {
+  font-size: 0.85rem;
+  color: #e5e7eb;  /* light grey, visible on dark background */
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .artist-card-modern {
+    padding: 1.75rem 1.25rem;
+  }
+}
+/* Card titles */
+.video-card .card-title {
+  color: #f9fafb;              /* bright white */
+  font-weight: 600;
+}
+
+/* Card descriptions */
+.video-card .artist-meta,
+.video-card .card-text,
+.video-card p {
+  color: #cbd5e1;              /* light slate, readable on dark bg */
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+/* =========================
+   HERO SPOTLIGHT (BIGGER)
+   ========================= */
+
+.spotlight-card {
+  max-width: 750px;      /* bigger card */
+  margin-left: auto;
+  padding: 1.75rem !important;
+}
+
+.spotlight-img {
+  width: 200px;          /* bigger image */
+  height: 200px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+}
+
+.spotlight-meta {
+  color: #a3aab6;
+  font-size: 1rem;
+}
+
+.spotlight-desc {
+  color: #cbd5e1;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+/* =========================
+   ABOUT PAGE READABILITY FIX
+   ========================= */
+
+/* Any dark card/box used on About page */
+.about-card,
+.about-card * {
+  color: #e5e7eb !important; /* readable light text */
+}
+
+/* Headings inside About card */
+.about-card h1,
+.about-card h2,
+.about-card h3,
+.about-card h4,
+.about-card h5,
+.about-card h6 {
+  color: #f9fafb !important;
+}
+
+/* Keep accent headings accent */
+.about-card .text-accent {
+  color: var(--accent) !important;
+}
+
+/* Bullets + paragraphs look softer but visible */
+.about-card p,
+.about-card li {
+  color: #d1d5db !important;
+  line-height: 1.7;
+}
+
+/* If you used Bootstrap "text-muted" anywhere, override it */
+.about-card .text-muted {
+  color: #cbd5e1 !important;
+  opacity: 1 !important;
+}
+/* =========================
+   UPCOMING ARTISTS (PREMIUM)
+   ========================= */
+
+.upcoming-artist-card {
+  background: rgba(10, 16, 28, 0.9);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.upcoming-artist-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.75);
+  border-color: rgba(255, 76, 41, 0.35);
+}
+
+/* Image feels more cinematic */
+.upcoming-artist-img {
+  width: 100%;
+  height: 520px;         /* reduce from 550 for balance */
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.05) saturate(1.06);
+  transform: scale(1.02);
+  transition: transform 0.35s ease;
+}
+
+.upcoming-artist-card:hover .upcoming-artist-img {
+  transform: scale(1.07);
+}
+
+/* Subtle top vignette for polish */
+.upcoming-artist-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,76,41,0.14), transparent 45%),
+    linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+/* Overlay container (your text area) */
+.upcoming-overlay {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+
+  padding: 16px 16px 14px;
+  border-radius: 18px;
+
+  background: rgba(7, 11, 18, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(16px);
+
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55);
+}
+
+/* Typography */
+.upcoming-overlay h5 {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+  color: #f9fafb;
+  letter-spacing: 0.2px;
+}
+
+.upcoming-overlay .artist-location {
+  font-size: 0.92rem;
+  color: #cbd5e1;
+  margin-bottom: 10px;
+}
+
+/* Song line */
+.upcoming-overlay .song-label {
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e5e7eb;
+  opacity: 0.95;
+  margin-bottom: 6px;
+}
+
+.upcoming-overlay .song-title {
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* Description line */
+.upcoming-overlay .upcoming-desc {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #e5e7eb;
+  opacity: 0.95;
+}
+
+/* Optional small badge (nice “Scheduled” label) */
+.upcoming-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  padding: 8px 10px;
+  border-radius: 999px;
+
+  background: rgba(255, 76, 41, 0.12);
+  border: 1px solid rgba(255, 76, 41, 0.35);
+  color: #ffb4a6;
+  backdrop-filter: blur(10px);
+}
+/* Make "Song Performing" clearer */
+.upcoming-overlay .song-label{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  background: rgba(255, 76, 41, 0.14);
+  border: 1px solid rgba(255, 76, 41, 0.35);
+
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: #ffe3dc;          /* brighter */
+  opacity: 1;
+}
+
+.upcoming-overlay .song-title{
+  display: block;
+  margin-top: 8px;
+  font-size: 1.02rem;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+/* Optional: stronger contrast for that whole line */
+.upcoming-overlay .song-row{
+  margin-top: 10px;
+}
