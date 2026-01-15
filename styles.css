@@ -436,3 +436,78 @@ footer {
 .upcoming-overlay .song-row{
   margin-top: 10px;
 }
+
+
+/* ================================
+   Readability fixes (Dark UI)
+   Put this at the BOTTOM of styles.css
+================================ */
+
+/* Default text on dark backgrounds */
+body {
+  color: #e5e7eb; /* light gray */
+}
+
+/* Make Bootstrap muted text readable on dark backgrounds */
+.text-muted,
+.opacity-75,
+.opacity-50,
+small,
+.small,
+.form-text {
+  color: rgba(229, 231, 235, 0.85) !important;
+  opacity: 1 !important;
+}
+
+/* Labels + headings inside dark sections/cards */
+.bg-dark-alt .form-label,
+.bg-dark-alt h1,
+.bg-dark-alt h2,
+.bg-dark-alt h3,
+.bg-dark-alt h4,
+.bg-dark-alt h5,
+.bg-dark-alt h6,
+.artist-card-modern .form-label,
+.video-card h1,
+.video-card h2,
+.video-card h3,
+.video-card h4,
+.video-card h5,
+.video-card h6 {
+  color: #f9fafb !important;
+}
+
+/* Paragraphs + list items inside dark cards */
+.bg-dark-alt p,
+.bg-dark-alt li,
+.artist-card-modern p,
+.video-card p,
+.video-card li {
+  color: rgba(229, 231, 235, 0.9) !important;
+}
+
+/* Inputs/selects/textarea: keep text readable */
+.form-control,
+.form-select,
+textarea {
+  color: #111827 !important;       /* input text */
+  background-color: #ffffff !important;
+}
+
+/* Placeholder readability */
+.form-control::placeholder,
+textarea::placeholder {
+  color: rgba(17, 24, 39, 0.55) !important;
+}
+
+/* Make borders subtle but visible */
+.artist-card-modern,
+.video-card {
+  border: 1px solid rgba(148, 163, 184, 0.22) !important;
+}
+
+/* Optional: make section subtitle on dark backgrounds readable */
+.bg-dark-alt .section-title + p,
+.bg-dark-alt .section-title ~ p {
+  color: rgba(229, 231, 235, 0.85) !important;
+}
