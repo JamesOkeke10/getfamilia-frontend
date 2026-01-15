@@ -19,7 +19,6 @@
   <!-- Cloudflare Turnstile (Spam Protection) -->
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
-  <!-- Small page-only tweaks (keeps text readable on dark cards) -->
   <style>
     .form-text.readable { color:#cbd5e1 !important; opacity:1 !important; }
     .contact-status { margin-top: 1rem; }
@@ -111,16 +110,16 @@
                   <div class="invalid-feedback">Please enter a message (10+ characters).</div>
                 </div>
 
-                <!-- Turnstile widget (Optional in local dev) -->
+                <!-- Turnstile widget (Optional) -->
                 <div class="my-3">
-                  <!-- Replace with your real Turnstile site key in production -->
+                  <!-- If you haven't set Turnstile yet, leave it as-is OR remove the whole block -->
                   <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY"></div>
                   <div class="form-text readable">
                     This helps us block spam submissions.
                   </div>
                 </div>
 
-                <button type="submit" class="btn btn-accent">
+                <button id="sendBtn" type="submit" class="btn btn-accent">
                   <span class="me-2"><i class="fa-solid fa-paper-plane"></i></span>
                   Send Message
                 </button>
@@ -157,23 +156,16 @@
               </p>
 
               <div class="social-links mb-3">
-                <a href="https://www.tiktok.com/@getfamilia" target="_blank" rel="noopener"
-                  aria-label="Get Familia on TikTok" title="TikTok">
+                <a href="https://www.tiktok.com/@getfamilia" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
                   <i class="fab fa-tiktok"></i>
                 </a>
-
-                <a href="https://www.instagram.com/getfamilia_tv" target="_blank" rel="noopener"
-                  aria-label="Get Familia on Instagram" title="Instagram">
+                <a href="https://www.instagram.com/getfamilia_tv" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
                   <i class="fab fa-instagram"></i>
                 </a>
-
-                <a href="https://x.com/getfamilia_tv" target="_blank" rel="noopener"
-                  aria-label="Get Familia on X (Twitter)" title="X">
+                <a href="https://x.com/getfamilia_tv" target="_blank" rel="noopener" aria-label="X" title="X">
                   <i class="fab fa-x-twitter"></i>
                 </a>
-
-                <a href="http://www.youtube.com/@GetFamilia-Tv" target="_blank" rel="noopener"
-                  aria-label="Get Familia on YouTube" title="YouTube">
+                <a href="https://www.youtube.com/@GetFamilia-Tv" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
                   <i class="fab fa-youtube"></i>
                 </a>
               </div>
@@ -192,8 +184,7 @@
   <footer class="site-footer py-3 border-top border-secondary mt-5">
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
       <div class="d-flex align-items-center gap-2">
-        <img src="assets/logo/logo-getfamilia-main.png" alt="Get Familia Logo" class="navbar-logo"
-          style="height: 32px; width: auto;" />
+        <img src="assets/logo/logo-getfamilia-main.png" alt="Get Familia Logo" class="navbar-logo" style="height: 32px; width: auto;" />
         <span class="mb-0 small">© <span id="year"></span> Get Familia. All rights reserved.</span>
       </div>
 
@@ -201,20 +192,19 @@
         <div>
           <a href="about.html" class="me-3 text-decoration-none text-light">About</a>
           <a href="contact.html" class="me-3 text-decoration-none text-light">Contact</a>
-          <a href="http://www.youtube.com/@GetFamilia-Tv" target="_blank" rel="noopener"
-            class="text-decoration-none text-accent">
+          <a href="https://www.youtube.com/@GetFamilia-Tv" target="_blank" rel="noopener" class="text-decoration-none text-accent">
             Watch on YouTube
           </a>
         </div>
 
         <div class="social-links">
-          <a href="https://www.tiktok.com/@getfamilia" target="_blank" rel="noopener" aria-label="Get Familia on TikTok" title="TikTok">
+          <a href="https://www.tiktok.com/@getfamilia" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
             <i class="fab fa-tiktok"></i>
           </a>
-          <a href="https://www.instagram.com/getfamilia_tv" target="_blank" rel="noopener" aria-label="Get Familia on Instagram" title="Instagram">
+          <a href="https://www.instagram.com/getfamilia_tv" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
             <i class="fab fa-instagram"></i>
           </a>
-          <a href="https://x.com/getfamilia_tv" target="_blank" rel="noopener" aria-label="Get Familia on X (Twitter)" title="X">
+          <a href="https://x.com/getfamilia_tv" target="_blank" rel="noopener" aria-label="X" title="X">
             <i class="fab fa-x-twitter"></i>
           </a>
         </div>
@@ -222,41 +212,81 @@
     </div>
   </footer>
 
+  <!-- Year -->
   <script>
-  const form = document.getElementById("contactForm");
-  const alertBox = document.getElementById("formAlert");
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+  </script>
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    alertBox.innerHTML = "";
+  <!-- CONTACT FORM SUBMIT -->
+  <script>
+    // IMPORTANT: choose ONE of these (use the one that actually works for you)
 
-    const payload = {
-      name: document.getElementById("name").value.trim(),
-      email: document.getElementById("email").value.trim(),
-      inquiryType: document.getElementById("inquiryType").value,
-      links: document.getElementById("links").value.trim(),
-      message: document.getElementById("message").value.trim(),
-    };
+    // Option A (recommended now): Render backend URL
+    const API_BASE = "https://getfamilia-backend.onrender.com";
 
-    try {
-      const res = await fetch("http://127.0.0.1:5000/api/submissions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+    // Option B: Only use this if you have api.getfamilia.ca already pointing to your backend
+    // const API_BASE = "https://api.getfamilia.ca";
 
-      const data = await res.json();
+    const form = document.getElementById("contactForm");
+    const statusBox = document.getElementById("contactStatus");
+    const sendBtn = document.getElementById("sendBtn");
 
-      if (!res.ok) throw new Error(data?.message || "Submission failed");
-
-      alertBox.innerHTML = `<div class="alert alert-success">Submitted successfully. We’ll get back to you soon.</div>`;
-      form.reset();
-    } catch (err) {
-      alertBox.innerHTML = `<div class="alert alert-danger">${err.message}</div>`;
+    function showStatus(type, message) {
+      statusBox.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
     }
-  });
-</script>
 
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      statusBox.innerHTML = "";
+
+      // Bootstrap-style validation
+      if (!form.checkValidity()) {
+        form.classList.add("was-validated");
+        showStatus("warning", "Please complete the required fields correctly.");
+        return;
+      }
+
+      const payload = {
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        inquiryType: document.getElementById("inquiryType").value,
+        links: document.getElementById("links").value.trim(),
+        message: document.getElementById("message").value.trim(),
+      };
+
+      // If you later enable Turnstile in backend, you'll read the token like:
+      // const turnstileToken = document.querySelector('textarea[name="cf-turnstile-response"]')?.value;
+
+      sendBtn.disabled = true;
+      sendBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin me-2"></i>Sending...`;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/submissions`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          const msg = data?.error || data?.message || "Submission failed. Please try again.";
+          showStatus("danger", msg);
+          return;
+        }
+
+        showStatus("success", "Submitted successfully. We’ll get back to you soon.");
+        form.reset();
+        form.classList.remove("was-validated");
+      } catch (err) {
+        showStatus("danger", "Network error. Please try again in a moment.");
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.innerHTML = `<span class="me-2"><i class="fa-solid fa-paper-plane"></i></span>Send Message`;
+      }
+    });
+  </script>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
