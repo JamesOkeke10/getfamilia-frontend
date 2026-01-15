@@ -25,9 +25,46 @@
       opacity: 1 !important;
     }
 
+    /* Make ALL body text readable inside dark cards/sections */
+    .artist-card-modern,
+    .video-card {
+      color: #e5e7eb; /* light gray text */
+    }
+
+    /* Labels + headings remain crisp */
+    .artist-card-modern .form-label,
+    .video-card h3,
+    .video-card h5 {
+      color: #f9fafb !important;
+    }
+
+    /* Inputs/selects readable */
+    .form-control,
+    .form-select {
+      background-color: #0b1220;
+      color: #f9fafb;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+    .form-control::placeholder {
+      color: rgba(203, 213, 225, 0.7);
+    }
+    .form-control:focus,
+    .form-select:focus {
+      box-shadow: none;
+      border-color: rgba(56, 189, 248, 0.6);
+    }
+
+    /* Invalid feedback visible on dark background */
+    .invalid-feedback {
+      color: #fca5a5;
+    }
+
     .contact-status { margin-top: 1rem; }
     .contact-status .alert { margin-bottom: 0; }
     .social-links a { margin-right: .85rem; }
+
+    /* Keep paragraph text readable */
+    p, .small { color: #cbd5e1; }
   </style>
 </head>
 
@@ -129,7 +166,7 @@
           <!-- INFO -->
           <div class="col-lg-5">
             <div class="video-card p-4 h-100">
-              <h3 class="mb-3" style="color:#f9fafb;">Business &amp; Collaboration</h3>
+              <h3 class="mb-3">Business &amp; Collaboration</h3>
 
               <p class="mb-2">
                 For bookings, partnerships, media, or brand collaborations, contact us directly:
@@ -147,7 +184,7 @@
 
               <hr class="border-secondary" />
 
-              <h5 class="mb-2" style="color:#f9fafb;">Follow Get Familia</h5>
+              <h5 class="mb-2">Follow Get Familia</h5>
               <p class="mb-2 small">
                 Stay updated on new sessions, Artist of the Week features, and behind-the-scenes clips.
               </p>
@@ -218,8 +255,12 @@
 
   <!-- SUBMIT -->
   <script>
-    // IMPORTANT: Use Render for now (api.getfamilia.ca is not set yet)
-    const API_BASE = "RENDER_BACKEND_URL_HERE"; // e.g. https://getfamilia-backend.onrender.com
+    /**
+     * Use Render for now.
+     * IMPORTANT: Replace the URL below with your REAL Render backend URL.
+     * Example: https://getfamilia-backend.onrender.com
+     */
+    const API_BASE = "https://getfamilia-backend.onrender.com";
 
     const form = document.getElementById("contactForm");
     const statusBox = document.getElementById("contactStatus");
