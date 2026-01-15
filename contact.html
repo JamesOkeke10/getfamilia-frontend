@@ -220,73 +220,59 @@
 
   <!-- CONTACT FORM SUBMIT -->
   <script>
-    // IMPORTANT: choose ONE of these (use the one that actually works for you)
+  // Use your live API domain (best) or Render URL as fallback
+  const API_BASE = "https://api.getfamilia.ca";
+  // const API_BASE = "https://getfamilia-backend.onrender.com";
 
-    // Option A (recommended now): Render backend URL
-    const API_BASE = "https://getfamilia-backend.onrender.com";
+  const form = document.getElementById("contactForm");
+  const statusBox = document.getElementById("contactStatus");
 
-    // Option B: Only use this if you have api.getfamilia.ca already pointing to your backend
-    // const API_BASE = "https://api.getfamilia.ca";
+  function showStatus(type, message) {
+    statusBox.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+  }
 
-    const form = document.getElementById("contactForm");
-    const statusBox = document.getElementById("contactStatus");
-    const sendBtn = document.getElementById("sendBtn");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    statusBox.innerHTML = "";
 
-    function showStatus(type, message) {
-      statusBox.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+    // Basic browser validation
+    if (!form.checkValidity()) {
+      form.classList.add("was-validated");
+      showStatus("warning", "Please complete the required fields correctly.");
+      return;
     }
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      statusBox.innerHTML = "";
+    const payload = {
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      inquiryType: document.getElementById("inquiryType").value,
+      links: document.getElementById("links").value.trim(),
+      message: document.getElementById("message").value.trim(),
+    };
 
-      // Bootstrap-style validation
-      if (!form.checkValidity()) {
-        form.classList.add("was-validated");
-        showStatus("warning", "Please complete the required fields correctly.");
+    try {
+      const res = await fetch(`${API_BASE}/api/submissions`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        const msg = data?.error || data?.message || "Server error. Please try again.";
+        showStatus("danger", msg);
         return;
       }
 
-      const payload = {
-        name: document.getElementById("name").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        inquiryType: document.getElementById("inquiryType").value,
-        links: document.getElementById("links").value.trim(),
-        message: document.getElementById("message").value.trim(),
-      };
-
-      // If you later enable Turnstile in backend, you'll read the token like:
-      // const turnstileToken = document.querySelector('textarea[name="cf-turnstile-response"]')?.value;
-
-      sendBtn.disabled = true;
-      sendBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin me-2"></i>Sending...`;
-
-      try {
-        const res = await fetch(`${API_BASE}/api/submissions`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-
-        const data = await res.json().catch(() => ({}));
-
-        if (!res.ok) {
-          const msg = data?.error || data?.message || "Submission failed. Please try again.";
-          showStatus("danger", msg);
-          return;
-        }
-
-        showStatus("success", "Submitted successfully. We’ll get back to you soon.");
-        form.reset();
-        form.classList.remove("was-validated");
-      } catch (err) {
-        showStatus("danger", "Network error. Please try again in a moment.");
-      } finally {
-        sendBtn.disabled = false;
-        sendBtn.innerHTML = `<span class="me-2"><i class="fa-solid fa-paper-plane"></i></span>Send Message`;
-      }
-    });
-  </script>
+      showStatus("success", "Submitted successfully. We’ll get back to you soon.");
+      form.reset();
+      form.classList.remove("was-validated");
+    } catch (err) {
+      showStatus("danger", "Network error. Please try again in a moment.");
+    }
+  });
+</script>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
