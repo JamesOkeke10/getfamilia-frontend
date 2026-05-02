@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Familia – Home</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome (icons) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img
+          src="assets/logo/logo-getfamilia-main.png"
+          alt="Get Familia Logo"
+          class="navbar-logo"
+        >
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#hero">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#videos">Performances</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="artist-of-the-week.html">Artist</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero-section d-flex align-items-center">
+    <div class="container text-center text-md-start">
+      <div class="row align-items-center">
+        <div class="col-md-7">
+          <h1 class="hero-title">
+            Get Familia <span class="text-accent">Music Hub</span>
+          </h1>
+          <p class="hero-subtitle">
+            Showcasing live performances, highlighting rising stars, and
+            connecting talents with the world.
+          </p>
+
+          <div class="d-flex flex-column flex-sm-row gap-3">
+            <a
+              href="https://www.youtube.com/@GetFamilia-Tv"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-accent btn-lg"
+            >
+              Watch on YouTube
+            </a>
+
+            <a
+              href="artist-of-the-week.html"
+              class="btn btn-outline-light btn-lg"
+            >
+              Artist of the Week
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-5 mt-4 mt-md-0">
+          <div class="hero-card p-4 spotlight-card">
+            <p class="mb-2 small text-uppercase text-accent fw-bold">
+              This Week’s Spotlight
+            </p>
+
+            <div class="spotlight-top d-flex align-items-center gap-3 mb-3">
+              <img
+                src="assets/artists/artist-of-week-raxx.jpg"
+                alt="Raxx"
+                class="spotlight-img"
+              />
+              <div>
+                <h3 class="mb-1">Raxx</h3>
+                <p class="mb-0 spotlight-meta">Toronto-based Rap Artist</p>
+              </div>
+            </div>
+
+            <p class="spotlight-desc mb-3">
+              Featured performance: <strong>“Mind Your Business”</strong>. Sharp delivery, bold presence, real momentum.
+            </p>
+
+            <div class="d-flex flex-wrap gap-2">
+              <a href="artist-of-the-week.html" class="btn btn-outline-accent btn-sm">
+                View Spotlight
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEOS / PERFORMANCES SECTION -->
+  <section id="videos" class="py-5 bg-dark-alt">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="section-title mb-0">Performances & Sessions</h2>
+        <a
+          href="https://www.youtube.com/@GetFamilia-Tv"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-sm btn-outline-accent"
+        >
+          View Full YouTube Channel
+        </a>
+      </div>
+
+      <div class="row g-4">
+        <!-- Performance Video -->
+        <div class="col-md-4">
+          <div class="card video-card h-100">
+            <div class="ratio ratio-16x9">
+              <iframe
+                src="https://www.youtube.com/embed/VIDEO_ID_PERFORMANCE"
+                title="Get Familia – Performance Video"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Performance Video</h5>
+              <p class="artist-meta mb-0">
+                A featured live performance session showcasing raw talent and stage presence.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q&A Session -->
+        <div class="col-md-4">
+          <div class="card video-card h-100">
+            <div class="ratio ratio-16x9">
+              <iframe
+                src="https://www.youtube.com/embed/VIDEO_ID_QA"
+                title="Get Familia – Q&A Session"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Q&A Session</h5>
+              <p class="artist-meta mb-0">
+                Quick questions with the artist—story, inspirations, and what’s next.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloopers -->
+        <div class="col-md-4">
+          <div class="card video-card h-100">
+            <div class="ratio ratio-16x9">
+              <iframe
+                src="https://www.youtube.com/embed/VIDEO_ID_BLOOPERS"
+                title="Get Familia – Bloopers"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Bloopers</h5>
+              <p class="artist-meta mb-0">
+                Behind-the-scenes moments and fun outtakes from the shoot.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <h2 class="section-title mb-4">About Get Familia</h2>
+      <div class="row g-4">
+        <div class="col-md-7">
+          <p>
+            Get Familia is a music-focused platform dedicated to discovering and
+            promoting unique talents. We create professional-quality performance
+            sessions, interviews, and visual content to help artists reach new audiences.
+          </p>
+          <p class="mb-0">
+            Whether you are an emerging musician or a music lover, Get Familia is your
+            home for authentic performances, real stories, and high-quality visuals.
+          </p>
+        </div>
+        <div class="col-md-5">
+          <div class="p-4 rounded-3 bg-dark-alt border border-secondary">
+            <h5 class="text-accent mb-3">What We Do</h5>
+            <ul class="mb-0">
+              <li>Curate live performance sessions.</li>
+              <li>Spotlight an Artist of the Week.</li>
+              <li>Promote upcoming talents on social media.</li>
+              <li>Connect artists with a wider audience.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION (HOME) -->
+  <section id="contact" class="py-5 bg-dark-alt">
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-2 mb-4">
+        <div>
+          <h2 class="section-title mb-1">Contact / Submit Your Music</h2>
+          <p class="mb-0 text-muted">
+            Submit your music, request a session, or reach out for bookings and collaborations.
+          </p>
+        </div>
+        <div class="small text-muted">
+          Email: <span class="text-accent">info@getfamilia.ca</span>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Form -->
+        <div class="col-lg-7">
+          <div class="artist-card-modern">
+            <div id="contactAlert" class="alert d-none" role="alert"></div>
+
+            <form id="homeContactForm" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="homeName" class="form-label">Name / Stage Name</label>
+                  <input
+                    type="text"
+                    id="homeName"
+                    name="name"
+                    class="form-control"
+                    placeholder="Cobbi Kay, Get Familia Band, etc."
+                    minlength="2"
+                    required
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label for="homeEmail" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    id="homeEmail"
+                    name="email"
+                    class="form-control"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label for="homeInquiryType" class="form-label">Type of Inquiry</label>
+                  <select
+                    id="homeInquiryType"
+                    name="inquiryType"
+                    class="form-select"
+                    required
+                  >
+                    <option value="" selected>Select an option</option>
+                    <option value="Artist Submission">Artist Submission / Performance Session</option>
+                    <option value="Booking">Booking / Live Event</option>
+                    <option value="Collaboration">Collaboration / Sponsorship</option>
+                    <option value="Media">Media</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="homeLinks" class="form-label">Music Links (optional)</label>
+                  <input
+                    type="text"
+                    id="homeLinks"
+                    name="links"
+                    class="form-control"
+                    placeholder="YouTube, Spotify, Audiomack, SoundCloud, EPK..."
+                  />
+                </div>
+
+                <div class="col-12">
+                  <label for="homeMessage" class="form-label">Message</label>
+                  <textarea
+                    id="homeMessage"
+                    name="message"
+                    rows="5"
+                    class="form-control"
+                    placeholder="Tell us about yourself, your sound, and what you’re looking for..."
+                    minlength="10"
+                    required
+                  ></textarea>
+                  <div class="form-text text-muted">
+                    Include your city, genre, and links if you have them.
+                  </div>
+                </div>
+
+                <div class="col-12 d-flex flex-wrap gap-2 align-items-center">
+                  <button id="homeSubmitBtn" type="submit" class="btn btn-accent">
+                    Send Message
+                  </button>
+                  <span id="homeSending" class="small text-muted d-none">
+                    Sending...
+                  </span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right column -->
+        <div class="col-lg-5">
+          <div class="video-card p-4 h-100">
+            <h5 class="text-accent mb-2">Business & Collaboration</h5>
+            <p class="mb-3">
+              For bookings, partnerships, and sponsorships, reach us directly or submit using the form.
+            </p>
+
+            <div class="mb-3">
+              <div class="small text-muted">Primary Email</div>
+              <div class="fw-semibold">info@getfamilia.ca</div>
+            </div>
+
+            <div class="mb-4">
+              <div class="small text-muted">Location</div>
+              <div>Toronto, Canada (sessions and events by booking only)</div>
+            </div>
+
+            <hr class="border-secondary" />
+
+            <h6 class="mb-2">Follow Get Familia</h6>
+            <p class="small text-muted mb-3">
+              Updates, behind-the-scenes, and upcoming artist announcements.
+            </p>
+
+            <div class="social-links mb-0">
+              <a href="https://www.tiktok.com/@getfamilia" target="_blank" rel="noopener" aria-label="Get Familia on TikTok">
+                <i class="fab fa-tiktok"></i>
+              </a>
+              <a href="https://www.instagram.com/getfamilia_tv" target="_blank" rel="noopener" aria-label="Get Familia on Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://x.com/getfamilia_tv" target="_blank" rel="noopener" aria-label="Get Familia on X (Twitter)">
+                <i class="fab fa-x-twitter"></i>
+              </a>
+              <a href="https://www.youtube.com/@GetFamilia-Tv" target="_blank" rel="noopener" aria-label="Get Familia on YouTube">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer py-3 border-top border-secondary mt-5">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <div class="d-flex align-items-center gap-2">
+        <img src="assets/logo/logo-getfamilia-main.png" alt="Get Familia Logo" style="height: 32px; width: auto;">
+        <span class="mb-0 small">
+          © <span id="year"></span> Get Familia. All rights reserved.
+        </span>
+      </div>
+
+      <div class="footer-links small d-flex align-items-center gap-3">
+        <div>
+          <a href="about.html" class="me-3 text-decoration-none text-light">About</a>
+          <a href="contact.html" class="me-3 text-decoration-none text-light">Contact</a>
+          <a
+            href="https://www.youtube.com/@GetFamilia-Tv"
+            target="_blank"
+            rel="noopener"
+            class="text-decoration-none text-accent"
+          >
+            Watch on YouTube
+          </a>
+        </div>
+
+        <div class="social-links">
+          <a href="https://www.tiktok.com/@getfamilia" target="_blank" rel="noopener" aria-label="Get Familia on TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://www.instagram.com/getfamilia_tv" target="_blank" rel="noopener" aria-label="Get Familia on Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://x.com/getfamilia_tv" target="_blank" rel="noopener" aria-label="Get Familia on X (Twitter)">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+          <a href="https://www.youtube.com/@GetFamilia-Tv" target="_blank" rel="noopener" aria-label="Get Familia on YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Year -->
+  <script>
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+  </script>
+
+  <!-- HOME CONTACT FORM -> BACKEND SUBMIT -->
+  <script>
+    // IMPORTANT:
+    // Replace this with your real backend URL on Render, e.g.:
+    // const API_BASE = "https://getfamilia-backend.onrender.com";
+    //
+    // If you set a custom domain later, use:
+    // const API_BASE = "https://api.getfamilia.ca";
+    const API_BASE = "https://api.getfamilia.ca";
+
+    const form = document.getElementById("homeContactForm");
+    const alertBox = document.getElementById("contactAlert");
+    const btn = document.getElementById("homeSubmitBtn");
+    const sending = document.getElementById("homeSending");
+
+    function showAlert(type, message) {
+      alertBox.className = `alert alert-${type}`;
+      alertBox.textContent = message;
+      alertBox.classList.remove("d-none");
+    }
+
+    function resetAlert() {
+      alertBox.classList.add("d-none");
+      alertBox.textContent = "";
+    }
+
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      resetAlert();
+
+      if (!form.checkValidity()) {
+        showAlert("warning", "Please complete the required fields correctly.");
+        return;
+      }
+
+      const payload = {
+        name: document.getElementById("homeName").value.trim(),
+        email: document.getElementById("homeEmail").value.trim(),
+        inquiryType: document.getElementById("homeInquiryType").value,
+        links: document.getElementById("homeLinks").value.trim(),
+        message: document.getElementById("homeMessage").value.trim(),
+      };
+
+      btn.disabled = true;
+      sending.classList.remove("d-none");
+
+      try {
+        const res = await fetch(`${API_BASE}/api/submissions`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          const msg = data?.error || "Something went wrong. Please try again.";
+          showAlert("danger", msg);
+          return;
+        }
+
+        showAlert("success", "Submitted successfully. We’ll get back to you soon.");
+        form.reset();
+      } catch (err) {
+        showAlert("danger", "Network error. Please try again in a moment.");
+      } finally {
+        btn.disabled = false;
+        sending.classList.add("d-none");
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
